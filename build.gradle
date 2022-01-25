@@ -11,9 +11,6 @@ repositories {
 
 dependencies {
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.1'
 
@@ -38,8 +35,8 @@ dependencies {
     // https://bonigarcia.dev/webdrivermanager
     implementation 'io.github.bonigarcia:webdrivermanager:5.0.2'
 
-}
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation 'org.testng:testng:7.5'
 
-test {
-    useJUnitPlatform()
+
 }
