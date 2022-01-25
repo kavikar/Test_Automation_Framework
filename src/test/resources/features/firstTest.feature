@@ -1,4 +1,4 @@
-@test
+@uiTest
 
   Feature: First Test
     Scenario: Check if Site is Launched
