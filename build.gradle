@@ -11,37 +11,30 @@ repositories {
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.1'
 
-    // https://mvnrepository.com/artifact/io.appium/java-client
     implementation group: 'io.appium', name: 'java-client', version: '7.3.0'
 
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-csv
     implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.9.0'
 
-    // https://mvnrepository.com/artifact/org.apache.poi/poi
     implementation group: 'org.apache.poi', name: 'poi', version: '5.1.0'
 
-    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
     implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.1.0'
 
-    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.1.0'
 
-    // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
 
-    // https://bonigarcia.dev/webdrivermanager
     implementation 'io.github.bonigarcia:webdrivermanager:5.0.2'
 
-    // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation 'org.testng:testng:7.5'
 
-    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     testImplementation 'io.rest-assured:rest-assured:4.5.0'
 
-    // https://mvnrepository.com/artifact/io.rest-assured/json-path
     implementation 'io.rest-assured:json-path:4.5.0'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.16.0'
+    
+    implementation 'org.apache.logging.log4j:log4j-core:2.16.0'
 
 }
