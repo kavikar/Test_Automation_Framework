@@ -47,4 +47,6 @@ dependencies {
 
     testImplementation 'io.cucumber:cucumber-junit:7.2.3'
 
+    implementation 'org.json:json:20211205'
+
 }

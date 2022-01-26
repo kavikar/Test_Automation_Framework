@@ -1,16 +1,16 @@
 package com.kar.pages;
 
 import io.cucumber.java.Scenario;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static utilities.GlobalRepo.properties;
+
 import java.io.File;
 import java.time.Duration;
-import org.apache.log4j.Logger;
 
 public class PageBase {
     protected WebDriver driver;
@@ -27,8 +27,8 @@ public class PageBase {
             TakesScreenshot scrShot = ((TakesScreenshot) driver);
             File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
         } catch (Exception e) {
-            System.out.println("Failed to take screenshot");
-            System.out.println("Exception : " + e.getMessage());
+            log("Failed to take screenshot");
+            log("Exception : " + e.getMessage());
         }
     }
 
@@ -37,11 +37,11 @@ public class PageBase {
             WebDriverWait wait = new WebDriverWait(driver, duration);
             wait.until(ExpectedConditions.visibilityOf(webElement));
             webElement.click();
-            System.out.println(elementName + " is displayed");
+            log(elementName + " is displayed");
             return true;
         } catch (Exception e) {
-            System.out.println(elementName + " is not displayed");
-            System.out.println("Exception : " + e.getMessage());
+            log(elementName + " is not displayed");
+            log("Exception : " + e.getMessage());
             return false;
         }
     }
@@ -49,12 +49,18 @@ public class PageBase {
     public boolean clickOnElement(WebElement webElement, String elementName) {
         try {
             webElement.click();
-            System.out.println("Clicked/Selected : " + elementName);
+            log("Clicked/Selected : " + elementName);
             return true;
         } catch (Exception e) {
-            System.out.println("Failed to click/select : " + elementName);
-            System.out.println("Exception : " + e.getMessage());
+            log("Failed to click/select : " + elementName);
+            log("Exception : " + e.getMessage());
             return false;
         }
     }
+
+    public void log(String s) {
+        scenario.log(s);
+//        logger.info(s);
+    }
+
 }

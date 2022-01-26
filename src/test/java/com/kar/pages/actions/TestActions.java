@@ -17,7 +17,7 @@ public class TestActions extends TestObjects {
 
     public void launchSiteURL() {
         try {
-            driver.get(properties.getProperty("url"));
+            driver.get(properties.getProperty("websiteURL"));
             System.out.println("Website is launched successfully");
         } catch (Exception e) {
             System.out.println("Failed to launch the website");
