@@ -7,16 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.ConfigReader;
+import static utilities.GlobalRepo.properties;
 import java.io.File;
 import java.time.Duration;
-import java.util.Properties;
+import org.apache.log4j.Logger;
 
 public class PageBase {
     protected WebDriver driver;
     protected Scenario scenario;
-    ConfigReader configReader = new ConfigReader();
-    protected Properties properties = configReader.readProperties();
+    private static final Logger logger = Logger.getLogger(PageBase.class);
     public static Duration twoSeconds = Duration.ofSeconds(2);
     public static Duration fiveSeconds = Duration.ofSeconds(5);
     public static Duration tenSeconds = Duration.ofSeconds(10);

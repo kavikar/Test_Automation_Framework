@@ -5,6 +5,7 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
+import static utilities.GlobalRepo.properties;
 
 public class TestActions extends TestObjects {
 

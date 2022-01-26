@@ -22,7 +22,8 @@ public class APIStepDefinition extends BaseStepDefinition {
 
     @Then("User should get {int} response code")
     public void userShouldGetResponseCode(int expectedCode) {
-        Assert.assertEquals(getResponseCode(),expectedCode);
+        getResponseCode();
+        Assert.assertEquals(responseCode, expectedCode);
     }
 
     @When("User adds the request payload")
@@ -31,6 +32,6 @@ public class APIStepDefinition extends BaseStepDefinition {
 
     @And("User gets the response body")
     public void userGetsTheResponseBody() {
-        System.out.println(getResponseBody());
+        getResponseBody();
     }
 }
