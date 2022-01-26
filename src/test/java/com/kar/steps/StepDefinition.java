@@ -8,38 +8,39 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
-import utilities.ConfigReader;
 import utilities.GlobalRepo;
 import utilities.SelectWebDriver;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
+
+import static utilities.GlobalRepo.properties;
 
 public class StepDefinition {
 
     SelectWebDriver selectWebDriver = new SelectWebDriver();
-    ConfigReader configReader = new ConfigReader();
-    Properties properties = configReader.readProperties();
     TestActions testActions;
     TestObjects testObjects;
     Scenario scenario;
 
     @Before
-    public void startTest (Scenario scenario) {
+    public void startTest(Scenario scenario) {
         this.scenario = scenario;
         System.out.println("Started Testing");
-        selectWebDriver.setWebDriver(properties.getProperty("browser"));
-        GlobalRepo.scenario = scenario;
-        testActions = new TestActions(GlobalRepo.webDriver,GlobalRepo.scenario);
-        testObjects = new TestObjects(GlobalRepo.webDriver);
+        if (!scenario.getUri().getPath().toLowerCase().contains("api")) {
+            selectWebDriver.setWebDriver(properties.getProperty("browser"));
+            GlobalRepo.scenario = scenario;
+            testActions = new TestActions(GlobalRepo.webDriver, GlobalRepo.scenario);
+            testObjects = new TestObjects(GlobalRepo.webDriver);
+        }
     }
 
     @After
-    public void endTest () {
-        if (scenario.isFailed()) {
-            System.out.println("Scenario Failed");
-            testActions.takeScreenshot();
+    public void endTest() {
+        if (!scenario.getUri().getPath().toLowerCase().contains("api")) {
+            if (scenario.isFailed()) {
+                System.out.println("Scenario Failed");
+                testActions.takeScreenshot();
+            }
+            GlobalRepo.webDriver.quit();
         }
-        GlobalRepo.webDriver.quit();
     }
 
     @Given("User launches website url")
